@@ -218,7 +218,6 @@ export class AppComponent implements OnDestroy {
           })
           .catch((error) => {
             console.error(error);
-            this.themeService.setDefaultColors();
             this.router.navigate(['/users/me']);
           });
       }
@@ -269,7 +268,7 @@ export class AppComponent implements OnDestroy {
     this.router.navigate(['/org']);
   }
 
-  private setLanguage(): void {
+  public setLanguage(): void {
     this.translate.addLangs(supportedLanguages);
     this.translate.setDefaultLang(fallbackLanguage);
 

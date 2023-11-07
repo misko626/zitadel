@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ActionsComponent } from './actions.component';
+import { AppModule } from '../../app.module';
+import { ManagementService } from '../../services/mgmt.service';
 
 describe('ActionsComponent', () => {
   let component: ActionsComponent;
@@ -9,6 +11,9 @@ describe('ActionsComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ActionsComponent],
+      imports: [AppModule],
+      providers: [ManagementService],
+      teardown: { destroyAfterEach: false },
     }).compileComponents();
   });
 

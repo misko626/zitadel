@@ -9,7 +9,7 @@ import { OrgCreateComponent } from './pages/org-create/org-create.component';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./pages/home/home.module'),
+    loadChildren: () => import('./pages/home/home.module').then((m) => m.HomeModule),
     canActivate: [AuthGuard, RoleGuard],
     data: {
       roles: ['.'],
@@ -93,7 +93,8 @@ const routes: Routes = [
     children: [
       {
         path: 'project/:projectid/grant/:grantid',
-        loadChildren: () => import('src/app/pages/user-grant-create/user-grant-create.module'),
+        loadChildren: () =>
+          import('src/app/pages/user-grant-create/user-grant-create.module').then((m) => m.UserGrantCreateModule),
         canActivate: [RoleGuard],
         data: {
           roles: ['user.grant.write'],
@@ -101,7 +102,8 @@ const routes: Routes = [
       },
       {
         path: 'project/:projectid',
-        loadChildren: () => import('src/app/pages/user-grant-create/user-grant-create.module'),
+        loadChildren: () =>
+          import('src/app/pages/user-grant-create/user-grant-create.module').then((m) => m.UserGrantCreateModule),
         canActivate: [RoleGuard],
         data: {
           roles: ['user.grant.write'],
@@ -109,7 +111,8 @@ const routes: Routes = [
       },
       {
         path: 'user/:userid',
-        loadChildren: () => import('src/app/pages/user-grant-create/user-grant-create.module'),
+        loadChildren: () =>
+          import('src/app/pages/user-grant-create/user-grant-create.module').then((m) => m.UserGrantCreateModule),
         canActivate: [RoleGuard],
         data: {
           roles: ['user.grant.write'],
@@ -117,7 +120,8 @@ const routes: Routes = [
       },
       {
         path: '',
-        loadChildren: () => import('src/app/pages/user-grant-create/user-grant-create.module'),
+        loadChildren: () =>
+          import('src/app/pages/user-grant-create/user-grant-create.module').then((m) => m.UserGrantCreateModule),
         canActivate: [RoleGuard],
         data: {
           roles: ['user.grant.write'],

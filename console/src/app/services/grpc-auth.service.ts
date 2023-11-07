@@ -163,7 +163,6 @@ export class GrpcAuthService {
 
     this.labelpolicy$.subscribe({
       next: (policy) => {
-        themeService.applyLabelPolicy(policy);
         this.labelpolicy.next(policy);
         this.labelPolicyLoading$.next(false);
       },
@@ -517,7 +516,7 @@ export class GrpcAuthService {
 
   public listMyZitadelPermissions(): Promise<ListMyZitadelPermissionsResponse.AsObject> {
     return this.grpcService.auth
-      .listMyZitadelPermissions(new ListMyZitadelPermissionsRequest(), null)
+      ?.listMyZitadelPermissions(new ListMyZitadelPermissionsRequest(), null)
       .then((resp) => resp.toObject());
   }
 

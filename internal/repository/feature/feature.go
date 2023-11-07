@@ -17,7 +17,7 @@ func EventTypeFromFeature(feature domain.Feature) eventstore.EventType {
 }
 
 type SetEvent[T SetEventType] struct {
-	*eventstore.BaseEvent
+	*eventstore.BaseEvent `json:"-"`
 
 	Value T
 }
@@ -26,11 +26,11 @@ func (e *SetEvent[T]) SetBaseEvent(b *eventstore.BaseEvent) {
 	e.BaseEvent = b
 }
 
-func (e *SetEvent[T]) Data() interface{} {
+func (e *SetEvent[T]) Payload() interface{} {
 	return e
 }
 
-func (e *SetEvent[T]) UniqueConstraints() []*eventstore.EventUniqueConstraint {
+func (e *SetEvent[T]) UniqueConstraints() []*eventstore.UniqueConstraint {
 	return nil
 }
 

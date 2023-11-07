@@ -13,11 +13,11 @@ import localePt from '@angular/common/locales/pt';
 import localeZh from '@angular/common/locales/zh';
 import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
-import { MatLegacyDialogModule as MatDialogModule } from '@angular/material/legacy-dialog';
-import { MatLegacySelectModule as MatSelectModule } from '@angular/material/legacy-select';
-import { MatLegacySnackBarModule as MatSnackBarModule } from '@angular/material/legacy-snack-bar';
-import { MatLegacyTooltipModule as MatTooltipModule } from '@angular/material/legacy-tooltip';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -66,6 +66,9 @@ import { StatehandlerService, StatehandlerServiceImpl } from './services/stateha
 import { StorageService } from './services/storage.service';
 import { ThemeService } from './services/theme.service';
 import { ToastService } from './services/toast.service';
+import { CreateLayoutModule } from './modules/create-layout/create-layout.module';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import ActionsModule from './pages/actions/actions.module';
 
 registerLocaleData(localeDe);
 i18nIsoCountries.registerLocale(require('i18n-iso-countries/langs/de.json'));
@@ -118,6 +121,8 @@ const authConfig: AuthConfig = {
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    HttpClientModule,
+    HttpClientTestingModule,
     AppRoutingModule,
     CommonModule,
     BrowserModule,
@@ -129,12 +134,13 @@ const authConfig: AuthConfig = {
         useClass: WebpackTranslateLoader,
       },
     }),
+    CreateLayoutModule,
+    ActionsModule,
     NavModule,
     MatNativeDateModule,
     HasRoleModule,
     InfoOverlayModule,
     BrowserAnimationsModule,
-    HttpClientModule,
     MatIconModule,
     MatTooltipModule,
     FooterModule,

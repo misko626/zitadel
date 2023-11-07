@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { SignedoutComponent } from './signedout.component';
+import { AppModule } from '../../app.module';
+import SignedoutModule from './signedout.module';
+import { SignedoutRoutingModule } from './signedout-routing.module';
 
 describe('SignedoutComponent', () => {
   let component: SignedoutComponent;
@@ -9,6 +12,8 @@ describe('SignedoutComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [SignedoutComponent],
+      imports: [AppModule, SignedoutModule, SignedoutRoutingModule],
+      teardown: { destroyAfterEach: false },
     }).compileComponents();
   }));
 

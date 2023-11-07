@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { LoginPolicyComponent } from './login-policy.component';
+import { AppModule } from '../../../app.module';
+import { LoginPolicyModule } from './login-policy.module';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('LoginPolicyComponent', () => {
   let component: LoginPolicyComponent;
@@ -9,6 +12,7 @@ describe('LoginPolicyComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [LoginPolicyComponent],
+      imports: [HttpClientTestingModule, AppModule, LoginPolicyModule],
     }).compileComponents();
   }));
 
